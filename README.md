@@ -26,7 +26,50 @@ This commands includes
 • Other IP Commands e.g. show ip route etc.
 <BR>
 
+## PROGRAM
+DEVELOPED BY:AJINA JOSHPIN.A
+REGISTER NUMBER:212223230008
+## CLIENT:
+```
+import socket 
+from pythonping import ping 
+s=socket.socket() 
+s.bind(('localhost'8000)) 
+s.listen(5) 
+c,addr=s.accept() 
+while True: 
+    hostname=c.recv(1024).decode() 
+    try: 
+        c.send(str(ping(hostname, verbose=False)).encode()) 
+    except KeyError: 
+        c.send("Not Found".encode())
+```
+## SERVER:
+```
+import socket 
+s=socket.socket() 
+s.connect(('localhost',8000)) 
+while True: 
+    ip=input("Enter the website you want to ping ") 
+    s.send(ip.encode()) 
+    print(s.recv(1024).decode())
+```
+## TRACEROUTE COMMAND:
+```
+from scapy.all import* 
+target = ["www.google.com"] 
+result, unans = traceroute(target,maxttl=32) 
+print(result,unans)
+```
 ## Output
+## CLIENT:
+![image](https://github.com/ajinajoshpin/4.Execution_of_NetworkCommends/assets/148514578/744ad312-5f3b-41d7-b0ed-63a6a2e3dd99)
+
+## SERVER:
+![image](https://github.com/ajinajoshpin/4.Execution_of_NetworkCommends/assets/148514578/8129a440-61ea-498c-a8d4-12ad4d41e5d6)
+
+## TRACEROUTE COMMAND:
+![image](https://github.com/ajinajoshpin/4.Execution_of_NetworkCommends/assets/148514578/63b0be3d-af07-4c8e-ab82-bea8f01dbcf7)
 
 ## Result
 Thus Execution of Network commands Performed 
